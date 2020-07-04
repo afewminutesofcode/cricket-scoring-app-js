@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 
 import { Home } from "./pages/home";
-import { CurrentMatch } from "./pages/CurrentMatch";
+import { CurrentMatch } from "./pages/currentMatch";
 
 import "./styles.css";
 import { MUIAppBar } from "./components/mui/MUIAppBar";
