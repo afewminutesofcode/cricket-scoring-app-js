@@ -35,3 +35,9 @@ export const tossResult = () => {
   //return Math.floor(Math.random() * 2) + 1;
   return 2;
 };
+
+export const formatPlayerName = (player) =>
+  player !== undefined ? `${player.firstName.charAt(0)}.${player.lastName}` : "";
+
+export const getAvailableBatsmenIDs = (teamPlayerIDs, dismissedBatsmenIDs) =>
+  teamPlayerIDs.filter((playerID) => !dismissedBatsmenIDs.includes(playerID));
