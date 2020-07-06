@@ -1,4 +1,4 @@
-import { START_NEW_OVER, UPDATE_BATSMEN } from "./constants";
+import { START_NEW_OVER, UPDATE_BATSMEN, UPDATE_BOWLER } from "./constants";
 
 export const updateCurrentBatsmen = (state, batsmenIDs, facingID) => {
   const { currentInnings } = state;
@@ -16,19 +16,52 @@ export const updateCurrentBatsmen = (state, batsmenIDs, facingID) => {
   };
 };
 
+const updateCurrentBowler = (state, value) => {
+  const { currentInnings } = state;
+  return {
+    innings: {
+      ...state.innings,
+      [currentInnings]: {
+        ...state.innings[currentInnings],
+        currentBowlerID: value
+      }
+    }
+  };
+};
+
+const updateCurrentInnings = (state, newObject) => {
+  return {
+    innings: {
+      ...state.innings,
+      [state.currentInnings]: {
+        ...state.innings[state.currentInnings],
+        ...newObject
+      }
+    }
+  };
+};
+
 export const CricketMatchReducer = (state, action) => {
   switch (action.type) {
     case START_NEW_OVER: {
       return {
         ...state,
-        overBall: 0,
-        currentOver: []
+        ...updateCurrentInnings(state, {
+          overBall: 0,
+          currentOver: []
+        })
       };
     }
     case UPDATE_BATSMEN: {
       return {
         ...state,
         ...updateCurrentBatsmen(state, action.batsmenIDs, action.facingID)
+      };
+    }
+    case UPDATE_BOWLER: {
+      return {
+        ...state,
+        ...updateCurrentBowler(state, action.value)
       };
     }
 

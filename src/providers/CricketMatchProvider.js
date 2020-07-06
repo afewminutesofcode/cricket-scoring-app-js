@@ -1,7 +1,7 @@
 import React from "react";
 import { worldXI, asiaXI } from "../data/teams";
 import { CricketMatchReducer } from "./CricketMatchReducer";
-import { START_NEW_OVER, UPDATE_BATSMEN } from "./constants";
+import { START_NEW_OVER, UPDATE_BATSMEN, UPDATE_BOWLER } from "./constants";
 import { inningsTemplate, tossResult } from "../helpers/cricket";
 
 const MatchContext = React.createContext();
@@ -68,10 +68,16 @@ const useCricketMatch = () => {
       batsmenIDs,
       facingID
     });
+  const updateBowler = (value) =>
+    dispatch({
+      type: UPDATE_BOWLER,
+      value
+    });
   return {
     state,
     startNewOver,
-    updateBatsmen
+    updateBatsmen,
+    updateBowler
   };
 };
 

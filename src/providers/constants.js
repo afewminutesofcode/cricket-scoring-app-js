@@ -1,2 +1,3 @@
 export const START_NEW_OVER = "START_NEW_OVER";
 export const UPDATE_BATSMEN = "UPDATE_BATSMEN";
+export const UPDATE_BOWLER = "UPDATE_BOWLER";
