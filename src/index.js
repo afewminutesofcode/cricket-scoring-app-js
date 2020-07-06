@@ -7,14 +7,17 @@ import { CurrentMatch } from "./pages/currentMatch";
 
 import "./styles.css";
 import { MUIAppBar } from "./components/mui/MUIAppBar";
+import { CricketMatchProvider } from "./providers/CricketMatchProvider";
 
 const App = () => (
   <div className="app-wrap">
     <MUIAppBar title={"Cricket Scoing App"} />
-    <Router>
-      <Home path="/" />
-      <CurrentMatch path="currentmatch" />
-    </Router>
+    <CricketMatchProvider>
+      <Router>
+        <Home path="/" />
+        <CurrentMatch path="currentmatch" />
+      </Router>
+    </CricketMatchProvider>
   </div>
 );
 
